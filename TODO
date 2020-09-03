@@ -1,0 +1,11 @@
+# To Do List
+
+- Add function to check if the filename already exists. If yes add a number and try again.
+
+- Add option to exclude games older than the input date.
+
+- Add option to only consider games vs titled opponents (FM, IM, GM).
+
+- Add option to only download games vs a certain opponent.
+
+- Adjust naming scheme.
