@@ -10,6 +10,16 @@ Supported types are: bullet, rapid, blitz
 from datetime import datetime
 import json
 import urllib.request
+import os
+
+def CheckFileName(file_name):
+    """
+    This function checks if a file with file_name already exists. If yes an error message is printed and the script aborted.
+    """
+    if os.path.isfile(os.getcwd()+f"/{file_name}"):
+        print(f"Error: A file named '{file_name}' already exists.")
+        print("Exiting...")
+        quit()
 
 def GameTypeTrue(game,game_type,rated,rules):
     """
@@ -124,6 +134,9 @@ def beginScrape(params):
     date = now.strftime("%Y-%m-%d")
     game_type_string = "_".join(game_type)
     file_name = f"{acc_name}_{date}_{game_type_string}.pgn"
+
+    # Check if file already exists
+    CheckFileName(file_name)
 
     # Run the request, check games for type and write correct ones to file
     with urllib.request.urlopen(f"https://api.chess.com/pub/player/{acc_name}/games/archives") as url:
